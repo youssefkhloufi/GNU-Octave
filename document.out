@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Introducci\363n}{}
+\BOOKMARK [2][-]{subsection.1.1}{Caracter\355sticas principales del OCTAVE}{section.1}
+\BOOKMARK [2][-]{subsection.1.2}{Acceso al OCTAVE desde el entorno Unix}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{Accesos al OCTAVE desde windows}{section.1}
+\BOOKMARK [2][-]{subsection.1.4}{Algunas instrucciones de utilidad }{section.1}
+\BOOKMARK [2][-]{subsection.1.5}{Operaciones b\341sicas.}{section.1}
+\BOOKMARK [2][-]{subsection.1.6}{Ayudas y normas generales del OCTAVE}{section.1}
+\BOOKMARK [1][-]{section.2}{Vectores}{}
+\BOOKMARK [2][-]{subsection.2.1}{Vectores fila y vectores columnas}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Utilizaci\363n de los dos puntos}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{Funciones sobre los vectores}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Operaciones vectoriales y Operaciones puntuales}{section.2}
+\BOOKMARK [1][-]{section.3}{Editor del OCTAVE. Programaci\363n}{}
+\BOOKMARK [2][-]{subsection.3.1}{Tipos de m-files}{section.3}
+\BOOKMARK [1][-]{section.4}{Gr\341ficos}{}
+\BOOKMARK [2][-]{subsection.4.1}{Gr\341ficos en 2 dimensiones}{section.4}
+\BOOKMARK [1][-]{section.5}{Grabar y leer datos en ficheros. Impresi\363n de las gr\341ficas}{}
