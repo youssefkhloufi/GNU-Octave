@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{import}
+\usepackage{float }
 
 
 
@@ -21,6 +22,16 @@
 %\date{}
 
 \begin{document}
+
+\maketitle
+\bigskip
+\bigskip
+\bigskip
+\begin{figure}[H]
+  \centering
+    \includegraphics{graficos/octave}
+\end{figure}
+\newpage
 
 \maketitle
 
@@ -142,9 +153,25 @@ NO es lo mismo que:\\
 
 \section{Vectores}
 
-vacio.
+\begin{verbatim}
+    vector: conjunto de números a1, a2, ..., an
+\end{verbatim}
 
 \subsection{Vectores fila y vectores columnas}
+
+• Para definir vectores utilizamos los corchetes [ ].\\
+• Los elementos de una fila se separan mediante espacios en blanco o comas .\\
+• Los elementos de una columna se separan por puntos y comas o por nuevas líneas.\\
+\begin{verbatim}
+    > A=[ 1 2 3 4 5 6 7 8 9]; % vector fila
+    > vecf=[1,2,3,4,5,6,7,8,9]; % vector fila
+    > B=[ 1
+    > 2
+    > 3
+    > 4 ]; % vector columna
+    > vecc=[1;2;3;4]; % vector columna
+\end{verbatim}
+• El \% se utiliza en OCTAVE para escribir comentarios.
 
 \subsection{Utilización de los dos puntos}
 
@@ -156,14 +183,86 @@ vacio.
 
 \subsection{Tipos de m-files}
 
+\section{Secuencias}
+
+Una forma sencilla de producir una secuencia de números es utilizando la notación n:m
+donde n es el número inicial y m el final
+
+\begin{verbatim}
+	octave:2> 1:10 ans =
+
+	1	2	3	4	5	6	7	8	9	10
+\end{verbatim}
+
+También podemos usar la notación p:q:r para crear una secuencia que inicia en p, finaliza en r con intervalos de q. En el siguiente caso almacenaremos en una variable b una secuencia partiendo de cero y finalizando en diez, con un intervalo de dos entre cada número.
+
+\begin{verbatim}
+	octave:3> b=0:2:10 b =
+
+	0	2	4	6	8	10
+\end{verbatim}
+
+Tenemos	otras	dos	funciones	que	nos	permiten	crear	vectores	de	elementos secuenciales,  estos  son  linspace y  logspace,  el  primero  separa  los  números uniformemente y el segundo lo hace logarítmicamente.
+
+\begin{verbatim}
+	octave:39> linspace(1,4,6)
+	ans =
+
+	1.0000	1.6000	2.2000	2.8000	3.4000	4.0000
+\end{verbatim}
+
 \section{Gráficos}
 
 \subsection{Gráficos en 2 dimensiones}
 
-problema
-\begin{figure}
+\subsection{Gráficos en 3 dimensiones}
+
+Para producir gráficos en 3D disponemos de varias opciones, la mas simple es usar el comando  plot3(x,y,z) donde cada argumento es tomado para convertirse en los vértices del gráfico tridimensional.
+
+Si todos los argumentos son vectores de la misma longitud se dibujará una única línea continua. En caso de todos los argumento sean matrices cada una de las columnas de las matrices serán tratada como líneas separadas.
+
+En caso de que sólo se le pasen dos argumentos en lugar de tres, plot3(x,c), el segundo argumento 'c' debe ser un número complejo, así, las partes reales e imaginarias de éste son usadas como las coordenadas y e z respectivamente.
+
+Si sólo se le pasa un argumento, plot3(c), las partes reales e imaginarias de los argumentos son usados como los valores y y z, y se trazan frente su índice.
+
+El comando plot3 también acepta los argumentos que permiten modificar el formato de presentación de la gráfica descritos en la sección de gráficas bidimensionales.
+
+Ejemplo:\\
+\begin{verbatim}
+	octave:51> z = [0:0.05:5];
+    octave:52> plot3(z, exp(2i*pi*z), "3;sinusoidal compleja;")
+\end{verbatim}
+\begin{figure}[H]
   \centering
-    \includegraphics{graficos/octave}
+    \includegraphics{graficos/imagen4}
+  \caption{Gráfica de una sinusoidal compleja con 'plot3()'}
+\end{figure}
+
+El comando mesh(x,y,z) hace una representación tridimensional dado dos vectores x e y,  y  una  matriz  bidimensional  z.  Generalmente  se  usa  el  comando  meshgrid para generar los datos que usará mesh para para representar los ejes x e y.
+
+Ejemplo:\\
+\begin{verbatim}
+	octave:1> x=[-2:0.1:2];	% genera el vector
+	octave:3> [xx,yy] = meshgrid(x,x);	% genera las matrices de ejes octave:4> z=sin(xx.^2 – yy.^2);	% funcion z=sen(x^2 – y^2) octave:5> grid	% genera una rejilla
+	octave:6> mesh(x,x,z)	% crea el grafico
+\end{verbatim}
+\begin{figure}[H]
+  \centering
+    \includegraphics{graficos/imagen5}
+  \caption{Generación de gráficos mediante 'mesh()'}
+\end{figure}
+
+La función contour(x,y,z) recibe los mismos argumentos que mesh() y dibuja las curvas de nivel de la superficie.
+
+Vamos a generar las curvas de nivel del gráfico generado en el ejemplo anterior:
+
+\begin{verbatim}
+	octave:10> contour(x,x,z);
+\end{verbatim}
+\begin{figure}[H]
+  \centering
+    \includegraphics{graficos/imagen6}
+  \caption{Curvas de nivel generadas por medio de 'contour()'}
 \end{figure}
 
 \section{Grabar y leer datos en ficheros. Impresión de las gráficas}

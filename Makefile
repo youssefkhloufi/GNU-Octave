@@ -1,4 +1,4 @@
-doc = document
+doc = octave
 
 $(doc).pdf: $(doc).tex
 	pdflatex $(doc) 
@@ -10,5 +10,5 @@ bib:
 	pdflatex $(doc)
 
 clean:
-	rm *.pdf *.aux *.log *.toc *.bbl *.blg *.out
+	rm *.pdf *.aux *.log *.toc *.out
 
