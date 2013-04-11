@@ -47,7 +47,7 @@ Este documento explica de manera muy breve los fundamentos y características pr
 
 OCTAVE : Lenguaje numérico de programación de libre acceso.
 
-\subsection{Características principales del OCTAVE}
+\subsection{Características principales de OCTAVE}
 
 - Programa específico de Cálculo Numérico.\\
 • Sólo opera con Números.\\
@@ -59,26 +59,26 @@ OCTAVE : Lenguaje numérico de programación de libre acceso.
 • Capacidades Gráficas sencillas.\\
 • Posee gran cantidad de Funciones de todos los tipos.\\
 • Lenguaje de programación de alto nivel similar a Fortran, C, Pascal o Basic, pero más  fácil de aprender.\\
-Su lenguaje de programación es igual al de MATLAB.\\
+Su lenguaje de programación es igual al de MATLAB.
 
-\subsection{Acceso al OCTAVE desde el entorno Unix}
+\subsection{Acceso a OCTAVE desde el entorno Unix}
 
-• Ejecutar la instrucción octave desde cualquier ventana\\
+• Ejecutar la instrucción octave desde cualquier ventana de consola (tiene que estar instalado)\\
 • Aparece la siguiente ventana del octave:\\
 \begin{verbatim}
     octave:1>
 \end{verbatim}
 
-\subsection{Accesos al OCTAVE desde windows}
+\subsection{Accesos a OCTAVE desde windows}
 
 • Hacer doble click sobre el icono de OCTAVE.\\
-• Al igual que en el entorno Unix , aparece la ventana del octave (consola).\\
+• Al igual que en el entorno Unix , aparece la ventana del octave (consola).
 
 \subsection{Algunas instrucciones de utilidad }
 
--pwd: nos dice en que directorio nos encontramos.\\
--ls: nos da una lista de los ficheros y los directorios\\
--cd: nombre nos permite cambiar al directorio nombre.\\
+-\textbf{pwd:} nos dice en que directorio nos encontramos.\\
+-\textbf{ls:} nos da una lista de los ficheros y los directorios\\
+-\textbf{cd:} nombre nos permite cambiar al directorio nombre.
 
 \subsection{Operaciones básicas.}
 
@@ -114,7 +114,7 @@ Ejemplos:
     ans = 5          ans = 4
 \end{verbatim}
 
-• Observe que: los () se reservan sólo para escribir el argumento de las funciones.\\
+• Observe que: los () se reservan sólo para escribir el argumento de las funciones.
 
 \subsection{Ayudas y normas generales del OCTAVE}
 
@@ -149,7 +149,7 @@ Ejemplos:
 • Los nombres de estas variables pueden formarse utilizando letras,dígitos, etc.\\
 • Las variables se pueden borrar con el comando \textbf{clear} nombre.\\
 • Asignación por defecto: si a una expresión numérica no le asignamos un nombre, OCTAVE crea la variable ans.\\
-• El comando \textbf{who} nos permite conocer los nombres de las variables asignadas. Ejecute \textbf{who}\\
+• El comando \textbf{who} nos permite conocer los nombres de las variables asignadas. Ejecute \textbf{who}
 
 \section{Vectores}
 
@@ -212,6 +212,7 @@ Ejemplos:
 
 \subsection{Operaciones vectoriales y Operaciones puntuales}
 
+\medskip
 \begin{center}
 \begin{tabular}{|c|c|} \hline
 \textbf{Operaciones}   &  \textbf{Operaciones puntuales} \\ \hline
@@ -247,7 +248,7 @@ Para editar un programa nuevo, desde la misma ventana del OCTAVE , escribir el c
     9.84;11.73;10.61;9.02;7.65;5.71;3.79;2.55];
 \end{verbatim}
 
-Para ejecutarlo y realizar operaciones con las variables guardadas:\\
+Para ejecutarlo y realizar operaciones con las variables guardadas:
 \begin{verbatim}
     > clear
     > help prac
@@ -259,7 +260,7 @@ Para ejecutarlo y realizar operaciones con las variables guardadas:\\
 
 \textbf{Observaciones importantes:}\\
 • Los ficheros deben ser escritos en ASCII . La extensión del programa es \textbf{.m}\\
-• El programa debe de ejecutarse desde el directorio donde se encuentre.\\
+• El programa debe de ejecutarse desde el directorio donde se encuentre.
 
 \section{Secuencias}
 
@@ -287,6 +288,111 @@ Tenemos	otras	dos	funciones	que	nos	permiten	crear	vectores	de	elementos secuenc
 	ans =
 
 	1.0000	1.6000	2.2000	2.8000	3.4000	4.0000
+\end{verbatim}
+
+\section{Sistema de ecuaciones}
+
+Para la resolución de sistemas de ecuaciones del tipo Ax = b utilizamos la notación a\b, por ejemplo, para calcular el siguiente sistema de ecuaciones de primer grado con dos incógnitas
+\begin{verbatim}
+    6·x - 7·y = 5
+    8·x - 9·y = 7
+\end{verbatim}
+haremos lo siguiente: guardaremos los elementos \textbf{x} e \textbf{y} en una matriz \textbf{a} y la igualdad en un vector \textbf{b}, para finalmente ejecutar el comando \textbf{a\textbackslash b}.
+\begin{verbatim}
+    octave:4> a=[6, -7;8,-9]
+    a =
+
+    6	-7
+    8	-9
+    
+    octave:5> b=[5;7]
+    b =
+
+    5
+    7
+
+    octave:6> a\b ans =
+
+    2
+    1
+\end{verbatim}
+
+\section{Funciones definidas por el usuario}
+
+En Octave podemos crear nuestras propias funciones, podemos escribirlas directamente desde la línea de comandos o ejecutarlas desde un archivo externo.
+
+Las funciones que creamos desde la línea de comandos deben cumplir con el siguiente formato:
+\begin{verbatim}
+    function variable_salida = nombre_funcion (argumentos_entrada)
+      cuerpo _funcion 
+    endfunction
+\end{verbatim}
+En caso de devolver varias variables, éstas deben estar encerradas entre corchetes
+“[ ]”:
+\begin{verbatim}
+    function [salida1,salida2] = nombre_funcion (argumentos_entrada)
+      cuerpo _funcion 
+    endfunction
+\end{verbatim}
+Por ejemplo, crearemos una función que calcula el seno(x) en grados:
+\begin{verbatim}
+    octave:1> function s = sind(x)
+    > %SIND(X) Calcula seno(x) en grados
+    > s = sin(x*pi/180);
+    > endfunction
+\end{verbatim}
+Y ejecutamos,
+\begin{verbatim}
+    octave:2> sind(45)
+    ans = 0.70711
+
+    octave:3> sind(90)
+    ans = 1
+\end{verbatim}
+Para que Octave ejecute un archivo éste debe tener extensión \textbf{.m} y debe encontrarse en el directorio desde donde estemos ejecutando Octave. También podemos agregar rutas adicionales con el comando  addpath('ruta'), donde ruta es el camino al directorio que contiene los scripts. Para borrar la ruta usamos rmpath('ruta').
+Ejemplo: Suma de los elementos que integran una matriz, \textbf{sumaelementos.m}
+\begin{verbatim}
+    M=[round(rand(3,3)*100)]  % creamos una matriz aleatoria de 3x3
+    [f,c]=size(M);            % f #filas; c #columnas
+    s=0;                      % inicializamos s=0 (suma inicial)
+    for i = 1:f               % recorre filas
+      for j=1:c               % recorre columnas (en cada fila)
+        s=s+M(i,j);           % suma cada elemento a s
+      end
+    end
+    s                         % muestra la suma final
+\end{verbatim}
+Para ejecutarlo escribiremos el nombre del archivo en la línea de comandos, deberá aparecer lo siguiente,
+\begin{verbatim}
+    octave:1> sumaelementos
+    M =
+    96 77 77
+    36 29 58
+    19 63 71
+    s = 526 
+\end{verbatim}
+Para crear programas donde el usuario  debe introducir datos utilizamos el comando \textbf{input} dentro del archivo.
+
+Ejemplo: Función que convierte kilos en libras, kilo2libra.m
+\begin{verbatim}
+    %*******************************************************************
+    % kilo2libra.m
+    % Programa que permite convertir un valor en kilos a libras.
+    %*******************************************************************
+    disp('\nPrograma de conversion de kilos a libras\n'); kilo = input(
+    'Introduzca el peso en kilogramos: '); libra=kilo*2.20462262185;
+    fprintf('\n%g kilogramos son %f libras.\n', kilo, libra);
+    %*******************************************************************
+\end{verbatim}
+Haremos la conversión de 40 kilogramos en libras,
+\begin{verbatim}
+    octave:2> kilo2libra
+
+    Programa de conversion de kilos a libras
+
+    Introduzca el peso en kilogramos: 40
+
+    40 kilos son 88.184905 libras.
 \end{verbatim}
 
 \section{Gráficos}
@@ -333,6 +439,7 @@ k black &  &  \\ \hline
     > hold off
 \end{verbatim}
 \textbf{Funciones gráficas}\\
+\smallskip
 • clf borra la pantalla gráfica.
 • hold on permite añadir al último gráfico una nueva figura.
 • hold off desactiva el hold on.
@@ -354,7 +461,7 @@ El comando plot3 también acepta los argumentos que permiten modificar el format
 
 Ejemplo:\\
 \begin{verbatim}
-	octave:51> z = [0:0.05:5];
+	  octave:51> z = [0:0.05:5];
     octave:52> plot3(z, exp(2i*pi*z), "3;sinusoidal compleja;")
 \end{verbatim}
 \begin{figure}[H]
@@ -365,7 +472,7 @@ Ejemplo:\\
 
 El comando mesh(x,y,z) hace una representación tridimensional dado dos vectores x e y,  y  una  matriz  bidimensional  z.  Generalmente  se  usa  el  comando  meshgrid para generar los datos que usará mesh para para representar los ejes x e y.
 
-Ejemplo:\\
+\textbf{Ejemplo:}
 \begin{verbatim}
 	octave:1> x=[-2:0.1:2];	% genera el vector
 	octave:3> [xx,yy] = meshgrid(x,x);	% genera las matrices de ejes octave:4> 
@@ -396,6 +503,7 @@ Vamos a generar las curvas de nivel del gráfico generado en el ejemplo anterior
 
 • La instrucción save fname. mat x y z graba las variables a b c en el fichero fname. mat ( archivos mat o MAT-files).\\
 • La instrucción load fname. mat recupera las variables guardadas en el archivo fname. mat.\\
+\smallskip
 \textbf{Ejemplo:}\\
 \begin{verbatim}
     > clear; clf
